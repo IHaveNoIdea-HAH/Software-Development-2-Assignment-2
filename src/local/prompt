@@ -1,0 +1,44 @@
+local Players = game:GetService("Players") --GETS PLAYER
+local localPlayer = Players.LocalPlayer
+
+local function updatePromptVisibility(prompt) 
+	local requiredTask = prompt:GetAttribute("RequiredTask")
+	if not requiredTask then return end -- no attribute set then ignore
+
+	local valueObj = localPlayer:FindFirstChild(requiredTask)
+	-- shows if task isn't completed
+	prompt.Enabled = valueObj ~= nil and valueObj.Value == false
+end
+
+local function refreshAllPrompts()
+	for _, obj in ipairs(workspace:GetDescendants()) do --searches through every part that has a  proximiyproompt
+		if obj:IsA("ProximityPrompt") then
+			updatePromptVisibility(obj)
+		end
+	end
+end
+
+-- Handle new prompts added to workspace
+workspace.DescendantAdded:Connect(function(obj)
+	if obj:IsA("ProximityPrompt") then
+		updatePromptVisibility(obj)
+	end
+end)
+
+-- When a task value is added to the player
+localPlayer.ChildAdded:Connect(function(child)
+	refreshAllPrompts()
+
+	-- Listen for task completion 
+	child.Changed:Connect(function()
+		refreshAllPrompts()
+	end)
+end)
+
+-- When a task value is removed
+localPlayer.ChildRemoved:Connect(function()
+	refreshAllPrompts()
+end)
+
+-- Initial check
+refreshAllPrompts()

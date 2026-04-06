@@ -1,0 +1,53 @@
+local npcscript = workspace.CellMimic.Mimic.ai4--the script for the ai
+local npc = workspace.CellMimic.Mimic --the ai model
+local npcroot = npc.HumanoidRootPart -- the ai humanoidrootpart
+local parttp = workspace.CellMimic.npctp.CFrame --the part it'll tp to
+local escape = workspace.CellMimic.EscapeChance -- this determines the chance of the ai escaping
+local value = escape.Value
+local escaped = false
+print("This is the chance",value)
+task.spawn(function()
+	while task.wait(10) do
+		if escape.Value >= 100 then
+			print("Uh oh, you exceeded the limit")
+		else
+			local randomise = math.random(1,5)
+			print("Chosen", randomise)
+			print(escape.Value)
+			if randomise == 1 then
+
+				escape.Value += 2
+				print("Added")
+			end
+			
+		end
+		
+	end
+	
+end)
+
+local cf = CFrame.new(0,0,0)
+for i=1,10 do
+	local part = Instance.new("Part")
+	part.Parent = workspace
+	part.Size = Vector3.new(9.81, 1, 9.44)
+	part.CFrame = cf
+	cf += Vector3.new(5,0,0)
+	part.Name = "Puddle"..i
+	
+end
+while task.wait(5) do
+	print("Running")
+	if not escaped then
+		print("Not escaped")
+		local random = math.random(1,100)
+		print(random)
+		if random <= escape.Value then
+			escaped = true
+			print("Escaping")
+			npcscript.Enabled = true
+			npcroot:PivotTo(parttp)
+			print("Escaped")
+		end
+	end
+end

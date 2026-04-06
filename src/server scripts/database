@@ -1,0 +1,153 @@
+local players = game:GetService("Players") --gets the players
+local datastore = game:GetService("DataStoreService") --for data store
+local run = game:GetService("RunService") --to prevent shutdown saving data from running
+local database = datastore:GetDataStore("data") --data can be anything. it just gets data i guess?
+local session = {} --honestly forgot. But its used to find players and save their data i think
+
+
+local replicatedstorage = game:GetService("ReplicatedStorage")
+
+
+local function leaderboard(player) --function to get leaderboard, also to add players and run stuff
+
+	------------------------------------------[LEADERBOARD]-------------------------------------------------
+	local leaderstats = Instance.new("Folder") --creates folder
+	leaderstats.Name = "leaderstats" --names it leader stats
+	leaderstats.Parent = player --parents it to the player
+	
+
+	local test = Instance.new("IntValue") --sets a value to the folder
+	test.Name = "Money" --basically names the int value
+	test.Value = 0 --the value obviously
+	test.Parent = leaderstats --sets it to leader stats
+	
+	--------------------------------------------------------------------------------------------
+	
+	------------------------------------------[Hidden Check]-------------------------------------------------
+	local ValueCheck = Instance.new("Folder") --creates folder
+	ValueCheck.Name = "ValueCheck" --names it leader stats
+	ValueCheck.Parent = player --parents it to the player
+	
+	local justjoined = Instance.new("BoolValue") --sets a value to the folder
+	justjoined.Name = "JustJoined" --basically names the int value
+	justjoined.Value = true  --the value obviously
+	justjoined.Parent = ValueCheck --sets it to leader stats
+
+	local tutorial = Instance.new("BoolValue") --sets a value to the folder
+	tutorial.Name = "DoneTutorial" --basically names the int value
+	tutorial.Value = false --the value obviously
+	tutorial.Parent = ValueCheck --sets it to leader stats
+	
+	local multipplier = Instance.new("IntValue") --sets a value to the folder
+	multipplier.Name = "Multiplier" --basically names the int value
+	multipplier.Value = 1 --the value obviously
+	multipplier.Parent = ValueCheck --sets it to leader stats
+	
+	local risks = Instance.new("IntValue") --sets a value to the folder
+	risks.Name = "risk" --basically names the int value
+	risks.Value = 1 --the value obviously
+	risks.Parent = ValueCheck --sets it to leader stats
+	--------------------------------------------------------------------------------------------
+
+	local success  
+	local playerdata  
+	local attempt = 1 
+	repeat 
+		success, playerdata = pcall(function() 
+			--player data is to store the data
+			return database:GetAsync(player.UserId) --this is to get data that is already stored
+		end)
+		attempt += 1  
+		if not success then
+			warn(playerdata)
+			print("Failed to save") 
+			task.wait(1)
+
+		end
+
+	until success or attempt == 5
+
+	if success then
+		print("Data save") --saves to data based
+		if not playerdata then --if no data base is found it creates new one
+			print("Creating data")
+			playerdata = {
+				["Money"] = 0,
+				["DoneTutorial"] = false,
+				["Multiplier"] = 1,
+				["risk"] = 1,
+			}
+		end
+		session[player.UserId] = playerdata
+	else
+		session[player.UserId] = {
+			["Money"] = 0,
+			["DoneTutorial"] = false,
+			["Multiplier"] = 1,
+			["risk"] = 1,
+		}
+	end
+	test.Value = session[player.UserId].Money --basically grabs the session library table thing and put the user id inside there and put the test value with it or something
+	tutorial.Value = session[player.UserId].DoneTutorial --basically grabs the session library table thing and put the user id inside there and put the test value with it or something
+
+	tutorial.Changed:Connect(function() --checks if the data has been changed
+		session[player.UserId].DoneTutorial = tutorial.Value --if something has been change, it sync's the data up
+
+	end)
+	test.Changed:Connect(function() --checks if the data has been changed
+		session[player.UserId].Money = test.Value --if something has been change, it sync's the data up
+		
+	end)
+end
+
+	
+
+players.PlayerAdded:Connect(leaderboard) 
+
+
+
+local function leaving(player) --saves data when they leave
+	print("Saving data")
+	if session[player.UserId] then --just realised
+		local success  --reason why we have these success and error as local
+
+		local error  --is because we need to repeat the setting the user data in the case it fails
+		local attempt = 1 --thus we have these attempts. Pretty cool ngl.
+		repeat
+			success, error = pcall(function()
+				database:SetAsync(player.UserId, session[player.UserId]) --creates data and sync the data. wait its to grab some data from the player inside the session
+			end)
+			attempt += 1 
+			if not success then
+				warn(error)
+				print("Failed to save") 
+				task.wait(1)
+
+			end
+
+
+
+		until success or attempt == 5
+
+		if success then
+			print("Data save... Nice ig")--i swear there was something here i was suppose to add. unless i'm crazy
+		end
+
+	end
+	
+	
+end
+players.PlayerRemoving:Connect(leaving) --checks if player leaves
+
+function shutdown() --sees if server shutdowns
+	print("saving")
+	--if run:IsStudio() then --if the shutdown happens in studio then it skips this
+	--	return
+	--end
+	for i, player in ipairs(players:GetPlayers()) do --grabs people in the server
+		task.spawn(function()-- uhhhhhhhh
+			leaving(player)--runs this
+		end)
+	end
+end
+game:BindToClose(shutdown)--checks if the game decided to go and sleep without telling everyone

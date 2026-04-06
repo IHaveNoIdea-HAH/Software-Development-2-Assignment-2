@@ -1,0 +1,20 @@
+local Tasks = {
+	-- Tasks: TaskName, TasKTodo, TaskReward
+	[1] = {
+		["Tasks"] = "Delivery",
+		["Todo"] = "Deliver 10 boxes to the storage room",
+		["Reward"] = 1.1 --Its based on percentage
+	},
+	[2] = {
+		["Tasks"] = "FixCam",
+		["Todo"] = "Fix the cameras highlighted around the facility",
+		["Reward"] = 1.1 --Its based on percentage
+	},
+	[3] = {
+		["Tasks"] = "Cleaning",
+		["Todo"] = "Clean all puddles around the facility",
+		["Reward"] = 1.1 --Its based on percentage
+	}
+}
+
+return Tasks

@@ -1,0 +1,297 @@
+local repstorage = game:GetService("ReplicatedStorage")
+local players = game:GetService("Players")
+local re = repstorage:WaitForChild("RemoteEvent")
+local lighting = game:GetService("Lighting")
+
+
+
+local dayLength = 1 * 30  -- 30 minutes in seconds
+local dayended= workspace.DayEnded
+
+-- modules
+local tasks = require(repstorage.Tasks)
+local maintasks = require(repstorage.MainTasks)
+
+local playerstasks = {}
+local playersmaintasks = {}
+--------------------------[SCRIPT BEGINS HERE]---------------------------------------
+
+-- Day/night settings
+local daySettings = {
+	ClockTime = 12,  -- Noon
+	Brightness = 2,
+	Ambient = Color3.fromRGB(200, 200, 200)
+}
+
+local nightSettings = {
+	ClockTime = 0,  -- Midnight
+	Brightness = 0.3,
+	Ambient = Color3.fromRGB(100, 100, 150)
+}
+
+-- Day and night function
+
+local function transitionToTime(targetSettings, duration)
+	local startBrightness = lighting.Brightness
+	local startAmbient = lighting.Ambient
+	local startClock = lighting.ClockTime
+
+	local elapsed = 0
+
+	while elapsed < duration do
+		elapsed = elapsed + 0.1
+		local progress = elapsed / duration
+
+		-- Smoothly transition brightness
+		lighting.Brightness = startBrightness + (targetSettings.Brightness - startBrightness) * progress
+
+		-- Smoothly transition ambient color
+		lighting.Ambient = Color3.new(
+			startAmbient.R + (targetSettings.Ambient.R - startAmbient.R) * progress,
+			startAmbient.G + (targetSettings.Ambient.G - startAmbient.G) * progress,
+			startAmbient.B + (targetSettings.Ambient.B - startAmbient.B) * progress
+		)
+
+		-- Update clock time
+		lighting.ClockTime = startClock + (targetSettings.ClockTime - startClock) * progress
+
+		task.wait(0.1)
+	end
+
+	-- Set to exact values
+	lighting.Brightness = targetSettings.Brightness
+	lighting.Ambient = targetSettings.Ambient
+	lighting.ClockTime = targetSettings.ClockTime
+end
+
+-- Reward system
+
+local function rewardsystem(playerinput,completed,reward)
+	print("Reward for", playerinput)
+	if completed then
+		return reward
+	end
+end
+
+-- Monitoring task
+
+local tasklist = {}
+
+local function monitorTask(player, taskValue,TaskName, Obj)
+	--table.insert(tasklist[player.UserId], TaskName, taskValue) 
+	taskValue.Changed:Connect(function()
+		
+
+		if taskValue.Value then
+			re:FireClient(player,"Completed", taskValue.Name)
+			print("Task completed: " .. taskValue.Name)
+			
+			-- other code here
+		end
+	end)
+end
+
+
+local function givetasks(player)
+	playerstasks[player.UserId] = {}
+	playersmaintasks[player.UserId] = {}
+
+	while #playerstasks[player.UserId] < 6 do
+		local random = math.random(1, #tasks)
+		if not table.find(playerstasks[player.UserId], tasks[random]) then
+			table.insert(playerstasks[player.UserId], tasks[random])
+			local addvalue = Instance.new("BoolValue") --create value to monitor tasks if it been completed
+			addvalue.Name = tasks[random].Tasks
+			addvalue.Parent = player
+			
+			re:FireClient(player,"Task", tasks[random].Tasks,tasks[random].obj,tasks[random].Todo)
+			-- Monitor this task
+			monitorTask(player, addvalue)
+		end
+		task.wait(0.025)
+
+	end
+
+	while #playersmaintasks[player.UserId] < 3 do
+		local random = math.random(1, #maintasks)
+		if not table.find(playersmaintasks[player.UserId], maintasks[random]) then
+			table.insert(playersmaintasks[player.UserId], maintasks[random])
+			local addvalue = Instance.new("BoolValue") --create value to monitor tasks if it been completed
+			addvalue.Name = maintasks[random].Tasks
+			addvalue.Parent = player
+			re:FireClient(player,"Task", maintasks[random].Tasks, maintasks[random].obj,maintasks[random].Todo)
+			-- Monitor this task
+			monitorTask(player, addvalue)
+		end
+		task.wait(0.025)
+
+	end
+
+
+	print("Player:", player.Name, "Tasks: ", playerstasks[player.UserId])
+end
+--Intermission
+local function intermission()
+	print("Intermission time")
+
+	for _, player in ipairs(players:GetPlayers()) do
+		local totalReward = 0
+		local tasknumber = 0
+		local taskcompleted = 0
+		
+		for _, v in ipairs(tasks) do
+			local taskValue = player:FindFirstChild(v.Tasks) -- get the BoolValue on the player
+			if taskValue then
+				tasknumber+=1
+				if taskValue.Value == true then
+					print(player.Name .. " completed: " .. v.Tasks)
+					totalReward += v.Reward
+					taskcompleted += 1
+				else
+					print(player.Name .. " failed: " .. v.Tasks)
+					
+				end
+				taskValue:Destroy() -- clean up after checking
+			end
+			
+		end
+		
+		for _, v in ipairs(maintasks) do
+			local taskValue = player:FindFirstChild(v.Tasks) -- get the BoolValue on the player
+
+			if taskValue then
+				tasknumber +=1
+				if taskValue.Value == true then
+					print(player.Name .. " completed: " .. v.Tasks)
+					totalReward += v.Reward
+					taskcompleted+=1
+				else
+					print(player.Name .. " failed: " .. v.Tasks)
+					--totalReward -= v.Reward
+				end
+				taskValue:Destroy() -- clean up after checking
+			end
+		end
+		local done = false
+		print("Player has done",taskcompleted, "amount of task")
+		if taskcompleted >= tasknumber/2 then
+			
+			print("You've done enough")
+			-- reward system
+			done  = true
+		else
+			print("You failed to meet qouta")
+			done = false 
+			
+			--punishment here
+		end
+		if player.ValueCheck.JustJoined.Value == true then
+			player.ValueCheck.JustJoined.Value = false
+			totalReward /= 2
+			totalReward *= player.ValueCheck.Multiplier.Value
+
+
+		end
+		
+		local gui = script.Parent.Tasks.reward
+		local mainframes = gui.Frame.MainFrame 
+		local questdone  = mainframes.questdone
+
+		local halfquests  = mainframes.halfquests
+
+		local quotareach  = mainframes.Quotareach
+
+		local reward  = mainframes.reward
+
+
+	
+		questdone.Text = "Quest done:".. taskcompleted
+		reward.Text = totalReward
+		quotareach.Text = "Quota Reached:"..tostring(done)
+		
+		
+		local clone = gui:Clone()
+		clone.Parent = player.PlayerGui
+		
+		print("total quest done",taskcompleted)
+		print(player.Name .. " total reward: " .. totalReward)
+		player.leaderstats.Money.Value += totalReward -- give reward
+		task.spawn(function()
+			task.wait(10)
+			clone:Destroy()
+		end)
+		
+		givetasks(player)
+		
+	end
+
+	for i = 1, 10 do
+		task.wait(1)
+	end
+	
+	
+	
+end
+
+
+local isDay = true
+task.spawn(function()
+	while true do
+		if isDay then
+			print("Day time!")
+			transitionToTime(daySettings, dayLength / 2)
+			isDay = false
+			
+		else
+			print("Night time!")
+			transitionToTime(nightSettings, dayLength / 2)
+			print("Ending night")
+			dayended.Value = true
+			intermission()
+			dayended.Value  = false
+
+			isDay = true
+			
+		end
+	end
+end)
+
+
+-- When player joins, give them tasks
+players.PlayerAdded:Connect(function(player)
+	
+--TASK HANDLER
+	givetasks(player)
+end)
+
+
+players.PlayerRemoving:Connect(function(player) --clean list to prevent memory leak
+	playerstasks[player.UserId] = nil
+end)
+
+
+	--[[ USE THIS FOR LATER
+	local test = "Delivery"
+	for i, playerTask in ipairs(playerstasks[player.UserId]) do
+		if playerTask["Tasks"] == test then
+			print("Removing: " .. test)
+			table.remove(playerstasks[player.UserId], i)
+			break
+		end
+	end
+	local test = "Delivery"
+	
+	if table.find(playerstasks[player.UserId], test) then
+		print("Found")
+	end
+-- When player completes a tas [GOING TO BE REWORKED]
+remoteevent.OnServerEvent:Connect(function(player, taskIndex)
+	local userId = player.UserId
+	print("Received: ", player,taskIndex)
+
+	if playerstasks[userId] and playerstasks[userId][taskIndex] then
+		print(player.Name .. " completed: " .. playerstasks[userId][taskIndex].Tasks)
+		table.remove(playerstasks[userId], taskIndex)
+
+	end
+end)]]
