@@ -1,0 +1,60 @@
+local gui = script.Parent
+local repstor = game:GetService("ReplicatedStorage")
+local remote = repstor:WaitForChild("RemoteEvent")
+local show = gui.Parent.Parent.Frame1
+local textorstuff = show:FindFirstChild("TextLabel")
+local outof = show:FindFirstChild("outof")
+local timer = show:FindFirstChild("time")
+local list = {"Text", "Text1", "text"}
+
+local timer = 5
+local word = 0
+local currentword = nil
+
+
+
+local function randomword()
+	local random = math.random(1, #list)
+	currentword = list[random]
+	textorstuff.Text = currentword
+	print("Current:",currentword)
+end
+randomword()
+gui.Focused:Connect(function()
+	print("Focused")
+	
+end)
+
+ gui:GetPropertyChangedSignal("Text"):Connect(function()
+	print("Currently typing: " .. gui.Text)
+	if word == 5 then
+		gui:ReleaseFocus()
+		print(word)
+		print("Focus released")
+		
+	end
+	if gui.Text == currentword then
+		print("yay")
+		word += 1
+		outof.Text= word .. "/5"
+		gui.Text = ""
+		randomword()
+		print(word)
+		
+	end
+
+end)
+
+gui.FocusLost:Connect(function()
+	print("FocusLost")
+	print("The final word", word)
+	gui.Parent.Parent.Parent.Parent.Parent.game:Destroy()
+	if word == 5 then
+		remote:FireServer("Quest4", "Complete")
+		print("Sent")
+	else
+		remote:FireServer("nah","nah")
+		print("Sent nah")
+	end
+	
+end)
