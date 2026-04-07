@@ -1,0 +1,21 @@
+local prox  = script.Parent
+local repst = game:GetService("ReplicatedStorage")
+local remote = repst:WaitForChild("RemoteEvent")
+local gui = prox.Script.game
+
+prox.Triggered:Connect(function(player)
+	if not player.ComputerWork or player.ComputerWork.Value == true then return end
+	gui:Clone().Parent = player.PlayerGui
+	player.Character.Humanoid.WalkSpeed = 0
+	remote.OnServerEvent:Connect(function(player,taskss,state)
+		print(taskss,state)
+		if taskss == "Quest4" and state == "Complete" then
+			player.ComputerWork.Value = true
+			player.Character.Huamnoid.WalkSpeed = 16
+			print("Yay you quest 4")
+		else
+			print("Fail")
+			player.Character.Humanoid.WalkSpeed= 16
+		end
+	end)
+end)
