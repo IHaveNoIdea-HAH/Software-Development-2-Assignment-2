@@ -80,18 +80,52 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 
 **What was completed**
 
+Nothing
+
 **What's next**
 
++ Map creation
++ Full objectives completed
+
 **Problem Faced**
+
+Due to assignments ruining the way how things progressed. All tasks were put on halt.
 
 ---
 
 ### Week 2 09/04/2026 - 15/04/2026
 
+**What was completed**
+
++ Objectives
++ Pathfinding issue solved
+
+**What's next**
+
++ Map Creation
++ Multiple Monster
++ Chat/Dialogue System
+
+**Problem Faced**
+
+Assignments stalling tasks.
+
+Generally the lack of time to focus on the tasks is what stalled the project.
+
 ---
 
 ### Week 3 16/04/2026 - 22/04/2026
 
+**What was completed**
+
+
+
+
+**What's next**
+
+
+
+**Problem Faced**
 
 
 ---
