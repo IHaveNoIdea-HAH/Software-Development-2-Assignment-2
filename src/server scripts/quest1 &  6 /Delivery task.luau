@@ -4,7 +4,7 @@ local repstorage = game:GetService("ReplicatedStorage")
 local tasks = 0
 
 
-
+ 
 local function spawnblock(player)
 	local part2 = Instance.new("Part")
 	part2.Parent = workspace
