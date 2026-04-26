@@ -56,9 +56,13 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 
 ## 2.1 Things added
 
++ Choice System
+
 ---
 
 ## 2.2 Things changed
+
++ Map 
 
 ---
 
@@ -114,7 +118,7 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 
 ---
 
-### Week 3 16/04/2026 - 22/04/2026
+### Week 3 16/04/2026 - 28/04/2026
 
 **What was completed**
 
@@ -134,7 +138,14 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 
 # 4.0 Tools and Techniques
 ## 4.1 Tools
+
+Pathfinding Module created by
+
+Type Writing Module
+
 ## 4.2 Techniques
+
+
 # 5.0 Test
 
  
