@@ -57,12 +57,14 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 ## 2.1 Things added
 
 + Choice System
++ 
 
 ---
 
 ## 2.2 Things changed
 
-+ Map 
++ Map
++ Entities in total reduce to 1
 
 ---
 
@@ -141,25 +143,53 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 
 ### 4.1.1 Roblox Studio
 ### 4.1.2 Pathfinding Module
+
+
+The Pathfinding Module which was created by [creator I forgot name of so future me replace this] offered a Module Script for people tomuse.
+
+Although the Module Script didn't have all the necessities for my Pathfinding Issue. It was enough to create a state machine after some modifications on the module script.
+
+The features of the module script included. 
+a more optimise use of Pathfinding Service,
+Constant tracking of the goal to reach
+and a better way to handle way points
+
+with these, the pathfinding problem was solved
+
 ### 4.1.3 TypeWriting Module
+
+The Typewriting module was found in the Roblox Dev Forum or something i forgot recheck that
+
+This Module was used fo give text on the GUI a text writing effect to immerse the player into think they are talking to someone 
+
 ### 4.1.4 DataStoreService
 
-Pathfinding Module created by
+This tool is an Inbuilt system in roblox. Used to call an API to the Roblox server, then storing data sent for the game.
 
-Type Writing Module
+Thus service was used to keep track of the player data
 
 ## 4.2 Techniques
 
 ### 4.2.1 State Machine 
 ### 4.2.2 Modularisation
+
+There has been many instance where modularisation was used to optimise the game.
+
+For example:
+Everything text based
+
+Things like the tasks were used to reduce the amount of lines are in single scrpt
+
 ### 4.2.3 OOP
 
 
 # 5.0 Test
 
-
+animation
+dialogue
+Choices
 | ID | What's being tested | What should happen | What actually happen | Evidence | Comment |
-| --- | ------- | -------- | ------------ | ---------- | ----------- |
-| --- | ------- | -------- | ------------ | ---------- | ----------- |
+| 1 | Implementation of Module Pathfinding | After implementing the module, tracking the player should be smooth | Worked as intended | ---------- | Add the attacking and state machine |
+| 2 | State Machine | When reachijg near player, chase them, when close enough. Attack | Smoothly chased Player, and attacked | ---------- | Further extension such as unique behaviour to the creatures are beomg considered |
 | --- | ------- | -------- | ------------ | ---------- | ----------- |
  
