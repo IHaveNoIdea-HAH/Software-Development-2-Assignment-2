@@ -139,13 +139,27 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 # 4.0 Tools and Techniques
 ## 4.1 Tools
 
+### 4.1.1 Roblox Studio
+### 4.1.2 Pathfinding Module
+### 4.1.3 TypeWriting Module
+### 4.1.4 DataStoreService
+
 Pathfinding Module created by
 
 Type Writing Module
 
 ## 4.2 Techniques
 
+### 4.2.1 State Machine 
+### 4.2.2 Modularisation
+### 4.2.3 OOP
+
 
 # 5.0 Test
 
+
+| ID | What's being tested | What should happen | What actually happen | Evidence | Comment |
+| --- | ------- | -------- | ------------ | ---------- | ----------- |
+| --- | ------- | -------- | ------------ | ---------- | ----------- |
+| --- | ------- | -------- | ------------ | ---------- | ----------- |
  
