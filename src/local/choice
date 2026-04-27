@@ -1,0 +1,141 @@
+local gui = script.Parent
+local ReplicatedStorage = game:GetService("ReplicatedStorage") -- Changed from ServerStorage
+local AnimateUI = require(ReplicatedStorage.TypeWriter) -- Make sure the module is in ReplicatedStorage
+local remote = ReplicatedStorage.named
+
+local skip = gui.textplace.skip
+local nextt = gui.textplace.next
+local counter = 0 -- used for keeping track of what message we are on
+local maxcounter = 0 --used to prevent the counter from over reaching
+
+local pathway = 0 --used to determine what pathay the player is on
+local endconv = false 
+
+local message= {"text2","text3"}
+
+local pathway1 = {"pathway 1","text2","text3"}
+local pathway2 = {"This is pathway 2", "The only pathway", "Perhaps... I dunno not idk I HAVE NO CLUE MANN"}
+
+local choice1 = gui.choice1
+local choice2 = gui.choice2
+local choice3 = gui.choice3
+local choice4 = gui.choice4
+
+local choicebutton = {
+	gui.choice1,
+	gui.choice2,
+	gui.choice3,
+	gui.choice4,
+}
+
+
+local function hidechoice()
+	for i, button in ipairs(choicebutton) do
+		button.Visible = false
+	end
+end
+local function showchoices(number)
+	for i, number in  ipairs(choicebutton) do 
+		local button = choicebutton[i]
+		button.Visible = true
+	end
+	
+end
+
+local function displaytext(displaying,number, max) --ignore for now. just theories
+end
+
+local textstuff = gui.textplace.text
+
+textstuff.Text = "HelloE" -- 0
+
+--==========STARTER===========
+
+-- Make sure the label
+AnimateUI.typeWrite(textstuff, "Text1",.05,skip)--runs module script
+skip.Visible = false
+nextt.Visible = true
+
+
+--================= choice s==================
+choice1.MouseButton1Click:Connect(function()
+	print("This has been chosen")
+	
+	pathway = 1
+	counter = 1
+	if pathway == 1 then
+	
+	end
+	hidechoice()
+	AnimateUI.typeWrite(textstuff, pathway1[counter],.05,skip)
+--	choice1.Visible = false
+	
+end)
+--[[choice2.MouseButton1Click:Connect(function()
+	print("This has been chosen")
+
+	pathway = 2
+	counter = 1
+	hidechoice()
+	AnimateUI.typeWrite(textstuff, pathway1[counter],.05,skip)
+	--	choice1.Visible = false
+
+end)]]
+
+
+
+
+--=================== MAIN STARTER =============================
+--when starting, value is 0
+nextt.MouseButton1Click:Connect(function()
+	print(counter)
+	if endconv then
+		ReplicatedStorage.RemoteEvent:FireServer("End")
+		gui.Parent:Destroy()
+		return
+	end
+	skip.Visible = true 
+	nextt.Visible = false
+	
+	
+	if pathway == 0 then
+		
+		
+		counter += 1 --evertime the next message button been pressed it adds to a counter to move to next message
+		AnimateUI.typeWrite(textstuff, message[counter],.05,skip) --first time display text 2
+		if counter == 2 then
+			showchoices(1)
+		end
+		
+		
+		
+		
+	elseif pathway == 1 then
+		
+		counter += 1 --evertime the next message button been pressed it adds to a counter to move to next message
+		AnimateUI.typeWrite(textstuff, pathway1[counter],.05,skip)
+		showchoices(1)
+	end
+	
+	--[[
+	
+	elseif pathway == 2 then
+
+		counter += 1 --evertime the next message button been pressed it adds to a counter to move to next message
+		if subpath == 0.1 then --FUTURE ME, CHANGE THIS LATER TO BE REUSABLE, THIS IS SUCH BAD PRACTICE 
+		elseif subpath == 0.2 then
+			AnimateUI.typeWrite(textstuff, pathway1[counter],.05,skip)
+		else
+			AnimateUI.typeWrite(textstuff, pathway1[counter],.05,skip)
+			if counter == 2 then
+				showchoices(2)
+			end
+		end
+
+	end]]
+	
+	skip.Visible = false
+	nextt.Visible = true
+	print(counter)
+end)
+ 
