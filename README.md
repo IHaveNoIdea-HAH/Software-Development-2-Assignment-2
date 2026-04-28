@@ -27,7 +27,8 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 | 4 | Sprint 1 | NPC Simple Monster AI | 5 | Normal | As a developer, I want an AI that has simple functions such as roaming, chasing and attacking. <br><br> So that there's a threat players should look out for | Monster walks to set waypoint. <br><br> If player is nearby, chase them. <br><br> If player is close enough, damage them | COMPLETE |
 | 5 | Sprint 1 | Paycheck | 3 | Low |As a developer, I want a paycheck that is given at the end of the day, depending on how many objectives they completed. If the player fails to complete half of the objectives they get punished and rewards reduced. <br> <br> So it gives reason for players to do objectives instead of doing nothing, and to reward those that do all the objectives | Gives money <br> <br>Reduce money if objectiives not completed | COMPLETE |
 | 7 | Sprint 1 | Creation of UI | 5 | Normal | As a developer, I want basic UI that can be expanded on. <br><br> So that in the future, Ui can be redesign and fit the aesthetic of the game | Basic UI | COMPLETE |
-
+| 10 | Sprint 2 | Interactive AI to talk to | 6 | High | As a player, I want to be capable of interacting with different characters inside the game. <br><br> So I can learn more about the world building and hidden lore. As well as to learn more about the characters. | Certain NPC can be interacted with <br><br> Some NPC may give tasks to do <br><br> Entities can be talked to as well. | COMPLETE |
+| 17 | Sprint 2 | Choice System | 4 | High | As a player, I want to be able to choose responses when talking to NPCs. <br><br> So I can feel more engaged with the world and characters. | Player is presented with choices during NPC dialogue <br><br> Each choice triggers a different NPC response | COMPLETE |
 
 ---
 
@@ -38,14 +39,13 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 | 6 | Sprint 1 | Creation of map | 7 | High | As a developer, I want a map that players can walk on instead of the default baseplate. So that players are more immersed into the game. | Must be Facility Lab Style. <br><br>Must have 1 floor in sprint 1 | IN PROGRESS |
 | 8 | Sprint 1 | Multiple Monster | 7 | High | As a developer, I want 4 entities. <br><br> So that it can be expanded on and makes players more interested in learning new creatures and their mechaninics | Multiple entities that vary in appearance and mechanic | IN PROGRESS |
 | 9 | Sprint 1 | Punishment and reward system | 3 | Low | As a developer, I want a fair reward and punishment. <br><br> So that players got goals to either meet the quota or achieve higher. | Appropriate rewards base on performance. <br><br> Punishment base on lack of doing quests | IN PROGRESS |
-| 10 | Sprint 1 | Interactive AI to talk to | 6 | High | As a player, I want to be capable of interacting with different characters inside the game. <br><br> So I can learn more about the world building and hidden lore. As well as to learn more about the characters. | Certain NPC can be interacted with <br><br> Some NPC may give tasks to do <br><br> Entities can be talked to as well. | TO DO |
 | 11 | Sprint 1 | Shop System | 3 | Low | As a player, I want to use the money I obtained to gain items. <br><br> So I have a goal to keep playing the game and to make it more fun. | The shop must be able to take away money from the player <br><br> The shop must give items in store to the player | TO DO |
 | 12 | Sprint 1 | Unique Monster AI | 7 | High | As a developer I want Monster AI to have unique behaviour such as stalking. <br><br> So it increases the horror factor | State Machine controlling NPC | TO DO |
 | 13 | Sprint 1 | NPC Giving mini quests | 2 | Low | As a developer, I want NPC that give small quests so players can learn more about the NPC while gaining small rewards | NPC gives quests that may give lore <br><br> The quests give rewards | TO DO |
 | 14 | Sprint 1 | NPC Scientist walking to waypoints | 5 | Normal | As a developer, I want npc to walk from one point to another to pretend they are working. So that the place seems more lively | The NPC shouldn't take too much processing power causing it to lag. <br><br> NPC shouldn't collide with players or each other. | TO DO |
 | 15 | Sprint 1 | Audio System | 5 | Medium | As a developer, I want an audio system that plays the appropriate audio when a certain action or scenario occurs. <br><br> So that players get a user input feedback | Plays audio at the correct time | TO DO |
 | 16 | Sprint 1 | Animation of AI | 5 | Normal | As a developer I want an Animation Handler <br><br> So when AI or players move or do an action, it plays an animation enhancing the player experience. | Plays animation | TO DO |
-| 17 | Sprint 2 | Choice System | 4 | High | As a player, I want to be able to choose responses when talking to NPCs. <br><br> So I can feel more engaged with the world and characters. | Player is presented with choices during NPC dialogue <br><br> Each choice triggers a different NPC response | TO DO |
+
 ---
 
 
@@ -124,15 +124,22 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 
 **What was completed**
 
-
++ Map
++ Choice System
++ Dialogue
++ Extra GUI
 
 
 **What's next**
 
-
+Extending the features of the game and polishing the GUI
 
 **Problem Faced**
 
+The lack of time and motivation to complete most of what is needed.
+If more people were to work on the game or full focus on the project without any distractions. Most requirements could of been met.
+
+In the future, better planning.
 
 ---
 
@@ -144,15 +151,16 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 ### 4.1.1 Roblox Studio
 ### 4.1.2 Pathfinding Module
 
+https://grayzcale.github.io/simplepath/
 
-The Pathfinding Module which was created by [creator I forgot name of so future me replace this] offered a Module Script for people tomuse.
+The Pathfinding Module which was created by grayzcale offered a Module Script for people tomuse.
 
 Although the Module Script didn't have all the necessities for my Pathfinding Issue. It was enough to create a state machine after some modifications on the module script.
 
-The features of the module script included. 
-a more optimise use of Pathfinding Service,
-Constant tracking of the goal to reach
-and a better way to handle way points
+The features of the module script included:
++ A more optimise use of Pathfinding Service
++ Constant tracking of the goal to reach
++ A better way to handle way points
 
 with these, the pathfinding problem was solved
 
@@ -189,7 +197,11 @@ animation
 dialogue
 Choices
 | ID | What's being tested | What should happen | What actually happen | Evidence | Comment |
+| --- | ------- | -------- | ------------ | ---------- | ----------- |
 | 1 | Implementation of Module Pathfinding | After implementing the module, tracking the player should be smooth | Worked as intended | ---------- | Add the attacking and state machine |
 | 2 | State Machine | When reachijg near player, chase them, when close enough. Attack | Smoothly chased Player, and attacked | ---------- | Further extension such as unique behaviour to the creatures are beomg considered |
-| --- | ------- | -------- | ------------ | ---------- | ----------- |
+| 3 | Dialogue |  | ------------ | ---------- | ----------- |
+| 4 | Choice System | -------- | ------------ | ---------- | ----------- |
+| 5 | Dialogue After Talking | -------- | ------------ | ---------- | ----------- |
+| 6 | ------- | -------- | ------------ | ---------- | ----------- |
  
