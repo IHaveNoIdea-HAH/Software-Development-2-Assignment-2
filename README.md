@@ -29,6 +29,7 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 | 7 | Sprint 1 | Creation of UI | 5 | Normal | As a developer, I want basic UI that can be expanded on. <br><br> So that in the future, Ui can be redesign and fit the aesthetic of the game | Basic UI | COMPLETE |
 | 10 | Sprint 2 | Interactive AI to talk to | 6 | High | As a player, I want to be capable of interacting with different characters inside the game. <br><br> So I can learn more about the world building and hidden lore. As well as to learn more about the characters. | Certain NPC can be interacted with <br><br> Some NPC may give tasks to do <br><br> Entities can be talked to as well. | COMPLETE |
 | 17 | Sprint 2 | Choice System | 4 | High | As a player, I want to be able to choose responses when talking to NPCs. <br><br> So I can feel more engaged with the world and characters. | Player is presented with choices during NPC dialogue <br><br> Each choice triggers a different NPC response | COMPLETE |
+| 6 | Sprint 2 | Creation of map | 7 | High | As a developer, I want a map that players can walk on instead of the default baseplate. So that players are more immersed into the game. | Must be Facility Lab Style. <br><br>Must have 1 floor in sprint 1 | COMPLETE |
 
 ---
 
@@ -36,7 +37,6 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 
 | ID | Sprint | Title | Points | Priority | User Story | Definition of Done | Status |
 |---|---|---|---|---|---|---|---|
-| 6 | Sprint 1 | Creation of map | 7 | High | As a developer, I want a map that players can walk on instead of the default baseplate. So that players are more immersed into the game. | Must be Facility Lab Style. <br><br>Must have 1 floor in sprint 1 | IN PROGRESS |
 | 8 | Sprint 1 | Multiple Monster | 7 | High | As a developer, I want 4 entities. <br><br> So that it can be expanded on and makes players more interested in learning new creatures and their mechaninics | Multiple entities that vary in appearance and mechanic | IN PROGRESS |
 | 9 | Sprint 1 | Punishment and reward system | 3 | Low | As a developer, I want a fair reward and punishment. <br><br> So that players got goals to either meet the quota or achieve higher. | Appropriate rewards base on performance. <br><br> Punishment base on lack of doing quests | IN PROGRESS |
 | 11 | Sprint 1 | Shop System | 3 | Low | As a player, I want to use the money I obtained to gain items. <br><br> So I have a goal to keep playing the game and to make it more fun. | The shop must be able to take away money from the player <br><br> The shop must give items in store to the player | TO DO |
