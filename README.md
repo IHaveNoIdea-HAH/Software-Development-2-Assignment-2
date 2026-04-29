@@ -9,9 +9,27 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 
 ## Table of Contents
 - [1.0 Backlog Updated](#10-backlog-updated)
+  - [1.1 Completed](#11-completed)
+  - [1.2 In Progress & To Do](#12-in-progress--to-do)
 - [2.0 Design and Development Documentation](#20-design-and-development-documentation)
+  - [2.1 Things Added](#21-things-added)
+  - [2.2 Things Changed](#22-things-changed)
 - [3.0 Project Management](#30-project-management)
+  - [3.1 Burndown Chart](#31-burndown-chart)
+  - [3.2 Week Review](#32-week-review)
+    - [Week 1 01/04/2026 - 08/04/2026](#week-1-01042026---08042026)
+    - [Week 2 09/04/2026 - 15/04/2026](#week-2-09042026---15042026)
+    - [Week 3 16/04/2026 - 28/04/2026](#week-3-16042026---28042026)
 - [4.0 Tools and Techniques](#40-tools-and-techniques)
+  - [4.1 Tools](#41-tools)
+    - [4.1.1 Roblox Studio](#411-roblox-studio)
+    - [4.1.2 Pathfinding Module](#412-pathfinding-module)
+    - [4.1.3 Typewriting Module](#413-typewriting-module)
+    - [4.1.4 DataStoreService](#414-datastoreservice)
+  - [4.2 Techniques](#42-techniques)
+    - [4.2.1 State Machine](#421-state-machine)
+    - [4.2.2 Modularisation](#422-modularisation)
+    - [4.2.3 OOP](#423-oop)
 - [5.0 Test](#50-test)
 
 # 1.0 Backlog updated
@@ -62,6 +80,14 @@ A dialogue choice system that enables players to select a response with the npc.
 
 Allowing for players to learn more about the world they're in, rather than forcing tons of information onto them.
 
+### Interactive NPC
+
+NPC were implemented for players to interact with.
+
+Currently their only functionality is to give dialogue
+
+In the future, expanding the NPC to interact with the evironment and the the player is still needed
+
 ---
 
 ## 2.2 Things changed
@@ -69,6 +95,7 @@ Allowing for players to learn more about the world they're in, rather than forci
 ### Map 
 
 The map was updated to block off unncessary parts that has no impact on the gameplay as a whole.
+As well as reducing decoration and how the building looked
 
 This was to save time and reduce workload.
 
@@ -139,10 +166,11 @@ Generally the lack of time to focus on the tasks is what stalled the project.
 
 **What was completed**
 
-+ Map
++ Map Layout
 + Choice System
 + Dialogue
 + Extra GUI
++ Characters
 
 
 **What's next**
@@ -153,8 +181,8 @@ Extending the features of the game and polishing the GUI
 
 The lack of time and motivation to complete most of what is needed.
 If more people were to work on the game or full focus on the project without any distractions. Most requirements could of been met.
+In the future, better planning in work schedule is needed.
 
-In the future, better planning.
 
 ---
 
@@ -164,6 +192,9 @@ In the future, better planning.
 ## 4.1 Tools
 
 ### 4.1.1 Roblox Studio
+
+Refere back to Sprint 1.
+
 ### 4.1.2 Pathfinding Module
 
 https://grayzcale.github.io/simplepath/
@@ -189,21 +220,34 @@ This Module was used fo give text on the GUI a text writing effect to immerse th
 
 This tool is an Inbuilt system in roblox. Used to call an API to the Roblox server, then storing data sent for the game.
 
-Thus service was used to keep track of the player data
+Thus service was used to keep track of the player data.
+
+<img width="1593" height="1066" alt="image" src="https://github.com/user-attachments/assets/7503ee2e-e37c-4f86-946b-373190d3a585" />
+
+
 
 ## 4.2 Techniques
 
 ### 4.2.1 State Machine 
+
+A State Machine was used for the AI to follow.
+
+This was used after the rework of the pathfinding AI make it more functional.
+
 ### 4.2.2 Modularisation
 
 There has been many instance where modularisation was used to optimise the game.
 
 For example:
-Everything text based
++ Tasks instead of being hardcoded into scripts. Was made into a module for easier configuration
 
 Things like the tasks were used to reduce the amount of lines are in single scrpt
 
 ### 4.2.3 OOP
+
+This was used in the Module SimplePath.
+
+Even if roblox had no real Object Oriented Programming into it. Developers still mimicked OOP by making private values _variable and without the _
 
 
 # 5.0 Test
