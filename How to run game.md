@@ -93,10 +93,4 @@ Once login, press "add connection then search for user "TestUserForProject
 
 Once entered, press "Full profile"
 
-then press the six squared grid and then Work at a facillity
-
-<img width="1703" height="615" alt="image" src="https://github.com/user-attachments/assets/a21213ad-92c1-4617-9176-2a8907e9558d" />
-
-then hit play
-
-<img width="1274" height="917" alt="image" src="https://github.com/user-attachments/assets/74131faa-f9c5-46f8-a3d0-470b8014d7e9" />
+then press the six squared grid and then Work at a facillity, following the same thing as desktop
