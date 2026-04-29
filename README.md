@@ -56,15 +56,30 @@ Inspired by Lobotomy Corporation created by Project Moon and SCP Foundation whic
 
 ## 2.1 Things added
 
-+ Choice System
-+ 
+### Choice System
+
+A dialogue choice system that enables players to select a response with the npc.
+
+Allowing for players to learn more about the world they're in, rather than forcing tons of information onto them.
 
 ---
 
 ## 2.2 Things changed
 
-+ Map
-+ Entities in total reduce to 1
+### Map 
+
+The map was updated to block off unncessary parts that has no impact on the gameplay as a whole.
+
+This was to save time and reduce workload.
+
+
+### Entities reduces
+
+Due to lack of time to focus on the project, the entities been reduce to 2.
+
+This is because of the lack of time and resources needed to make the mod
+
+The two entities that stayed in the game were E-134A and E-311NA. Refer back to sprint 1 to see more information onto the entities.
 
 ---
 
@@ -198,10 +213,11 @@ dialogue
 Choices
 | ID | What's being tested | What should happen | What actually happen | Evidence | Comment |
 | --- | ------- | -------- | ------------ | ---------- | ----------- |
-| 1 | Implementation of Module Pathfinding | After implementing the module, tracking the player should be smooth | Worked as intended | ---------- | Add the attacking and state machine |
-| 2 | State Machine | When reachijg near player, chase them, when close enough. Attack | Smoothly chased Player, and attacked | ---------- | Further extension such as unique behaviour to the creatures are beomg considered |
-| 3 | Dialogue |  | ------------ | ---------- | ----------- |
-| 4 | Choice System | -------- | ------------ | ---------- | ----------- |
-| 5 | Dialogue After Talking | -------- | ------------ | ---------- | ----------- |
-| 6 | ------- | -------- | ------------ | ---------- | ----------- |
+| 1 | Implementation of Module Pathfinding | After implementing the module, tracking the player should be smooth | Worked as intended | N/A | Add the attacking and state machine |
+| 2 | State Machine | When reachijg near player, chase them, when close enough. Attack | Smoothly chased Player, and attacked | N/A | Further extension such as unique behaviour to the creatures are beomg considered |
+| 3 | Dialogue | When interacting with an NPC. A GUI appears for players to interact with | GUI Show up | ---------- | Inputting type writer next |
+| 4 | Typewriter Effect | When entering dialogue, a type writer effect should slowly type out the message | Typed it | N/A | N/A |
+| 5 | Choice System | -------- | ------------ | ---------- | ----------- |
+| 6 | Dialogue After Talking | -------- | ------------ | ---------- | ----------- |
+| 7 | ------- | -------- | ------------ | ---------- | ----------- |
  
