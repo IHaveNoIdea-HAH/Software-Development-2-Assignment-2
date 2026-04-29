@@ -280,13 +280,15 @@ Choices
 | --- | ------- | -------- | ------------ | ---------- | ----------- |
 | 1 | Implementation of Module Pathfinding | After implementing the module, tracking the player should be smooth | Worked as intended | N/A | Add the attacking and state machine |
 | 2 | State Machine | When reachijg near player, chase them, when close enough. Attack | Smoothly chased Player, and attacked | N/A | Further extension such as unique behaviour to the creatures are beomg considered |
-| 3 | Dialogue | When interacting with an NPC. A GUI appears for players to interact with | GUI Show up | ---------- | Inputting type writer next |
+| 3 | Dialogue | When interacting with an NPC. A GUI appears for players to interact with | GUI Show up | <img width="1591" height="594" alt="image" src="https://github.com/user-attachments/assets/03db21ce-edef-4ac8-999d-9387bc350aea" />
+ | Inputting type writer next |
 | 4 | Typewriter Effect | When entering dialogue, a type writer effect should slowly type out the message | Typed it | N/A | N/A |
-| 5 | Choice System | When reaching a certain point, display multiple choices that leads to different pathways | After tons of times attempts to optimise the way choices were chosen. It was decided to hard code the display messages after choosing a choice. Still Done as intended in the end | ---------- | N/A |
-| 6 | Dialogue After Talking | When interacting and then exiting conversation to reinteract with the NPC. <br><br> Display new messages different from initial messages. | Done as intended | ------ | N/A |
-| 7 | Minigame GUI text, quests 4 | When interacting with prompt, Display GUI where player has to type out the word displayed. | Work as intended | ---------- | N/A |
-| 7 | Minigame GUI Click, quest 5 | When interacting the the prompt, Display GUI where the player has to click a box that's moving constantly | Worked as intended | ---------- | N/A |
-| 7 | Minigame GUI Time clicks, quest 2 | When Interacting with the prompt, Display GUI where players must time their click as a red bar goes left and right. | Done as intended. Damages player when failing | -------- | N/A |
-| 7 | NPC attacking | When NPC AI reaches nearby player, it attacks the player and damages them. | When reaching player at a certain distance, puts block infront and damages them | ---------- | Furhter extension to expand the behaviour the entity is needed. |
-| 7 | ------- | -------- | ------------ | ---------- | ----------- |
+| 5 | Choice System | When reaching a certain point, display multiple choices that leads to different pathways | After tons of times attempts to optimise the way choices were chosen. It was decided to hard code the display messages after choosing a choice. Still Done as intended in the end | <img width="1203" height="556" alt="image" src="https://github.com/user-attachments/assets/85975047-81b7-4231-a8fe-1a0c7d916919" />| N/A |
+| 6 | Dialogue After Talking | When interacting and then exiting conversation to reinteract with the NPC. <br><br> Display new messages different from initial messages. | Done as intended | N/A | N/A |
+| 7 | Minigame GUI text, quests 4 | When interacting with prompt, Display GUI where player has to type out the word displayed. | Work as intended | <img width="1306" height="504" alt="image" src="https://github.com/user-attachments/assets/dae4f0a4-916e-4513-9693-aa6106dda5ab" /> | N/A |
+| 8 | Minigame GUI Click, quest 5 | When interacting the the prompt, Display GUI where the player has to click a box that's moving constantly | Worked as intended | <img width="955" height="457" alt="image" src="https://github.com/user-attachments/assets/069b9d27-7cc5-4a25-9a57-99dc14597ace" />
+ | N/A |
+| 9 | Minigame GUI Time clicks, quest 2 | When Interacting with the prompt, Display GUI where players must time their click as a red bar goes left and right. | Done as intended. Damages player when failing | <img width="908" height="328" alt="image" src="https://github.com/user-attachments/assets/787ec5cf-9151-44f5-af13-e9bcc4999bc1" />
+ | N/A |
+| 10 | NPC attacking | When NPC AI reaches nearby player, it attacks the player and damages them. | When reaching player at a certain distance, puts block infront and damages them | N/a | Furhter extension to expand the behaviour the entity is needed. |
  
