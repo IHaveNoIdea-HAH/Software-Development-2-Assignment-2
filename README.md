@@ -189,11 +189,18 @@ In the future, better planning in work schedule is needed.
 
 
 # 4.0 Tools and Techniques
+
+---
+
 ## 4.1 Tools
+
+---
 
 ### 4.1.1 Roblox Studio
 
 Refere back to Sprint 1.
+
+---
 
 ### 4.1.2 Pathfinding Module
 
@@ -210,11 +217,15 @@ The features of the module script included:
 
 with these, the pathfinding problem was solved
 
+---
+
 ### 4.1.3 TypeWriting Module
 
 The Typewriting module was found in the Roblox Dev Forum or something i forgot recheck that
 
 This Module was used fo give text on the GUI a text writing effect to immerse the player into think they are talking to someone 
+
+---
 
 ### 4.1.4 DataStoreService
 
@@ -224,15 +235,22 @@ Thus service was used to keep track of the player data.
 
 <img width="1593" height="1066" alt="image" src="https://github.com/user-attachments/assets/7503ee2e-e37c-4f86-946b-373190d3a585" />
 
-
+---
 
 ## 4.2 Techniques
+
+---
 
 ### 4.2.1 State Machine 
 
 A State Machine was used for the AI to follow.
 
 This was used after the rework of the pathfinding AI make it more functional.
+
+<img width="1156" height="791" alt="image" src="https://github.com/user-attachments/assets/9c6fe7c4-5b33-4359-afff-5a862143a4e7" />
+
+
+---
 
 ### 4.2.2 Modularisation
 
@@ -243,12 +261,15 @@ For example:
 
 Things like the tasks were used to reduce the amount of lines are in single scrpt
 
+---
+
 ### 4.2.3 OOP
 
 This was used in the Module SimplePath.
 
 Even if roblox had no real Object Oriented Programming into it. Developers still mimicked OOP by making private values _variable and without the _
 
+---
 
 # 5.0 Test
 
@@ -261,7 +282,11 @@ Choices
 | 2 | State Machine | When reachijg near player, chase them, when close enough. Attack | Smoothly chased Player, and attacked | N/A | Further extension such as unique behaviour to the creatures are beomg considered |
 | 3 | Dialogue | When interacting with an NPC. A GUI appears for players to interact with | GUI Show up | ---------- | Inputting type writer next |
 | 4 | Typewriter Effect | When entering dialogue, a type writer effect should slowly type out the message | Typed it | N/A | N/A |
-| 5 | Choice System | -------- | ------------ | ---------- | ----------- |
-| 6 | Dialogue After Talking | -------- | ------------ | ---------- | ----------- |
+| 5 | Choice System | When reaching a certain point, display multiple choices that leads to different pathways | After tons of times attempts to optimise the way choices were chosen. It was decided to hard code the display messages after choosing a choice. Still Done as intended in the end | ---------- | N/A |
+| 6 | Dialogue After Talking | When interacting and then exiting conversation to reinteract with the NPC. <br><br> Display new messages different from initial messages. | Done as intended | ------ | N/A |
+| 7 | Minigame GUI text, quests 4 | When interacting with prompt, Display GUI where player has to type out the word displayed. | Work as intended | ---------- | N/A |
+| 7 | Minigame GUI Click, quest 5 | When interacting the the prompt, Display GUI where the player has to click a box that's moving constantly | Worked as intended | ---------- | N/A |
+| 7 | Minigame GUI Time clicks, quest 2 | When Interacting with the prompt, Display GUI where players must time their click as a red bar goes left and right. | Done as intended. Damages player when failing | -------- | N/A |
+| 7 | NPC attacking | When NPC AI reaches nearby player, it attacks the player and damages them. | When reaching player at a certain distance, puts block infront and damages them | ---------- | Furhter extension to expand the behaviour the entity is needed. |
 | 7 | ------- | -------- | ------------ | ---------- | ----------- |
  
